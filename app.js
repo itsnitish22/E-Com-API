@@ -38,12 +38,12 @@ app.use('/products', productRoutes)
 //request that has /orders will be forwaraded to orderRoutes function in products.js
 app.use('/orders', orderRoutes)
 
-//landing url
-// app.use('/', (req, res, next) => {
-//     res.status(200).json({
-//         message: "On the landing page"
-//     })
-// })
+// landing url
+app.use('/', (req, res, next) => {
+    res.status(200).json({
+        message: "On the landing page"
+    })
+})
 
 //if request doesn't hit anyone of the above, it will log this error, and if the error is something different, it will forward the request to next which then will handle other errors
 app.use((req, res, next) => {

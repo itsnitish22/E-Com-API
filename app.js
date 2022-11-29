@@ -6,7 +6,6 @@ const morgan = require('morgan') //for logging when we send a req. to the server
 const bodyParser = require('body-parser')
 const mongoose = require('mongoose')
 
-
 //connecting to our db on mongodb
 mongoose.connect('mongodb+srv://ecom:' + process.env.MONGO_ATLAS_PW + '@cluster0.zd0je.mongodb.net/myFirstDatabase?retryWrites=true&w=majority').then(() => {
     console.log("MongoDB Connected!")
@@ -39,7 +38,7 @@ app.use('/products', productRoutes)
 app.use('/orders', orderRoutes)
 
 // landing url
-app.use('/', (req, res, next) => {
+app.get('/', (req, res, next) => {
     res.status(200).json({
         message: "On the landing page"
     })

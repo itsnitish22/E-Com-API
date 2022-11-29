@@ -8,4 +8,9 @@ const port = process.env.PORT || 3000
 const server = http.createServer(app)
 
 //starting the server on port
-server.listen(port)
+server.listen(port, (err) => {
+    if (err)
+        console.log("Error!")
+    else
+        console.log("Server starting...")
+})

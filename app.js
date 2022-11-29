@@ -5,13 +5,20 @@ const orderRoutes = require('./api/routes/orders')
 const morgan = require('morgan') //for logging when we send a req. to the server
 const bodyParser = require('body-parser')
 const mongoose = require('mongoose')
+const dotenv = require('dotenv')
+
+dotenv.config()
 
 //connecting to our db on mongodb
-mongoose.connect('mongodb+srv://ecom:' + process.env.MONGO_ATLAS_PW + '@cluster0.zd0je.mongodb.net/myFirstDatabase?retryWrites=true&w=majority').then(() => {
-    console.log("MongoDB Connected!")
+// mongoose.connect(`mongodb+srv://ecom:${process.env.MONGO_ATLAS_PW}@cluster0.zd0je.mongodb.net/?retryWrites=true&w=majority`, err).then(() => {
+//     console.log("MongoDB Connected!")
+// })
+// mongoose.Promise = global.Promise
+console.log(process.env.MONGO_PASS)
+mongoose.connect(`mongodb+srv://ecom:${process.env.MONGO_PASS}@cluster0.zd0je.mongodb.net/?retryWrites=true&w=majority`, (err) => {
+    if (err) throw err;
+    console.log("MongoDB Connected!");
 })
-mongoose.Promise = global.Promise
-
 
 app.use(morgan('dev')) //format how morgan is used (can't be changed)
 app.use(bodyParser.urlencoded({ extended: false })) //parse urlencoded bodies, simple bodies will be parsed because of false

@@ -8,13 +8,6 @@ const mongoose = require('mongoose')
 const dotenv = require('dotenv')
 
 dotenv.config()
-
-//connecting to our db on mongodb
-// mongoose.connect(`mongodb+srv://ecom:${process.env.MONGO_ATLAS_PW}@cluster0.zd0je.mongodb.net/?retryWrites=true&w=majority`, err).then(() => {
-//     console.log("MongoDB Connected!")
-// })
-// mongoose.Promise = global.Promise
-console.log(process.env.MONGO_PASS)
 mongoose.connect(`mongodb+srv://ecom:${process.env.MONGO_PASS}@cluster0.zd0je.mongodb.net/?retryWrites=true&w=majority`, (err) => {
     if (err) throw err;
     console.log("MongoDB Connected!");
